@@ -1,0 +1,61 @@
+plugins {
+    // Apply the application plugin to add support for building a CLI application.
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation platform('org.springframework.boot:spring-boot-dependencies:3.0.2') // BOM for Spring Boot
+    implementation 'org.hyperledger.fabric:fabric-gateway:1.7.0'
+    implementation platform('com.google.protobuf:protobuf-bom:4.28.2')
+    implementation 'org.hyperledger.fabric:fabric-protos:0.3.4'
+    implementation platform('io.grpc:grpc-bom:1.67.1')
+//    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'io.grpc:grpc-api'
+    runtimeOnly 'io.grpc:grpc-netty-shaded'
+    implementation 'com.google.code.gson:gson:2.11.0'
+//    implementation 'org.springframework.boot:spring-boot-starter:3.4.0'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
+    implementation 'org.springframework.boot:spring-boot-starter'
+//    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+// https://mvnrepository.com/artifact/org.springframework/spring-messaging
+    implementation 'org.springframework:spring-messaging:6.2.0'
+
+
+// https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
+    implementation 'com.alibaba.fastjson2:fastjson2:2.0.52'
+
+
+
+    implementation 'cn.hutool:hutool-all:5.8.27'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    // SLF4J API
+    implementation 'org.slf4j:slf4j-api:1.7.36' // or the latest version
+
+    // Logback (SLF4J implementation)
+    implementation 'ch.qos.logback:logback-classic:1.2.6' // or the latest version
+
+    // https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-client
+    implementation 'org.apache.rocketmq:rocketmq-client:5.2.0'
+// https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-spring-boot-starter
+    implementation 'org.apache.rocketmq:rocketmq-spring-boot-starter:2.3.1'
+
+
+
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'App'
+}
