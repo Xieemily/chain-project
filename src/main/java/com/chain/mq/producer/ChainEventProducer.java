@@ -1,4 +1,4 @@
-package com.chain;
+package com.chain.mq.producer;
 
 
 import com.alibaba.fastjson2.JSON;
@@ -37,6 +37,7 @@ public class ChainEventProducer {
         Message<Map<String, String>> build = MessageBuilder
                 .withPayload(producerMap)
                 .setHeader(MessageConst.PROPERTY_KEYS, keys)
+                .setHeader(MessageConst.PROPERTY_TAGS, "mychannel")
                 .build();
         SendResult sendResult;
         try {
@@ -47,4 +48,5 @@ public class ChainEventProducer {
             // 自定义行为...
         }
     }
+
 }
